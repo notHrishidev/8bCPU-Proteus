@@ -1,5 +1,5 @@
-# 8bCPU-Proteus
-8 bit CPU which can do 11 different operations with maximum two operands at a time.
+# 8-bit Turing complete CPU in Proteus
+In this project, an 8-bit CPU is built which can perform 11 different operations on a maximum of two operands. The entire CPU was modelled at a gate level. A separate .txt file can be used to write the program, and a MS Excel workbook converts the code written in the custom assembly language to machine code, which can be loaded to the program memory. The memory unit used Dual Port reading which enabled an instruction to be completed within one clock cycle.
 # Specifications
 1. All data is transferred and manipulated as 8 bit words
 2. 16 bit instruction word with 4 bit opcode, and 3 operands each having a 4 bit address.
