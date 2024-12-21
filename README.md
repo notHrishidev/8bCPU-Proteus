@@ -1,8 +1,8 @@
 # 8bCPU-Proteus
 8 bit CPU which can do 11 different operations with maximum two operands at a time.
 # Specifications
-1. All data is transfered and manipulated as 8 bit words
-2. 16 bit instruction word with 4bit opcode, and 3 operands each having a 4 bit address.
+1. All data is transferred and manipulated as 8 bit words
+2. 16 bit instruction word with 4 bit opcode, and 3 operands each having a 4 bit address.
 3. Can also load 8 bit data directly to the registers
 4. Faster operand fetching and least complex design using Dual-port memory.
 5. 16 general purpose 8 bit registers available to the user.
@@ -11,17 +11,17 @@
 8. Instruction memory can be loaded through a pattern generator, which loads the instructions serially.
 
 # Limitations
-1. Too small wordlength for larger operations (limited to 8 bit wordlength to prevent complexity)
+1. Too small word length for larger operations (limited to 8 bit word length to prevent complexity)
 2. Random race conditions and logical congestions due to bugs in the Proteus software.
-3. Easy to identify bugs thanks to realtime simulation in Proteus but difficult to solve them if it involves changing connections and components.
+3. Easy to identify bugs thanks to real time simulation in Proteus but difficult to solve them if it involves changing connections and components.
 
 # How to use
-Here to generae te the machine code, I'm using MS Excel. Leveraging the feature of easily creating and manipulating Look Up Tables, MS Excel is the most straignt forward way to convert the custom assembly code to machine code.
+Here to generate the machine code, I'm using MS Excel. Leveraging the feature of easily creating and manipulating Look Up Tables, MS Excel is the most straightforward way to convert the custom assembly code to machine code.
 The code.txt file should have the instructions with each line having all four components, or filling in the arguments with "X". This file is linked to the Excel Workbook.
 Whenever the code.txt is edited, it must be saved and the data in the Excel Workbook must be refreshed. Only then the latest set of instructions will be reflected in the converted machine code.
 # Steps to generate machine code:
-1. Write the program in the code.txt file in the custom assembly language, about which you can refer o the excel Workbook.
-2. Sava this file and then in the Excel Workbook, go to the "Compiler" Sheet.
+1. Write the program in the code.txt file in the custom assembly language, about which you can refer to the excel Workbook.
+2. Save this file and then in the Excel Workbook, go to the "Compiler" Sheet.
 3. Go to the Data tab and select "Refresh all". Now the new instructions would be loaded.
 4. Now the cell at the bottom right part will be the instructions converted to machine code, which is to be loaded to the Instruction memory.
 
@@ -34,4 +34,6 @@ Whenever the code.txt is edited, it must be saved and the data in the Excel Work
 6. Start simulating by pressing the play button.
 
 # How it works
-The pattern generator continuously outputs the bits in the pattern provided. During the first 10 seconds, a 32hz clock loads the instruction memory with this pattern in a serial mode. This clock shouldnt be altered in any way. No other parameters in the pattern generator or the clock should be changed except for the Pattern itself. It takes 8 seconds to load the 256 bits of instructions to the instruction memory (1/32 x 16registers x 16 bit instruction word). An extra two seconds is given as buffer time in order to account for the computing power limitaations of the host machine and the subsequent clock skipping and bugs. The clock that drives the program counter is separate from the clock used to load the Instruction memory. The frequency of this clock can be varied freely as it only changes the speed of execution. This clock frequency also must be selected based on the hardware that the program in running on as the circuit simulation gets heavy on the CPU very fast. Once the 10 seconds is over the clock starts and instructions are executed. Incase there is no loops in the program, the program is executed from the first line again as there is no HALT feature.
+The pattern generator continuously outputs the bits in the pattern provided. During the first 10 seconds, a 32hz clock loads the instruction memory with this pattern in a serial mode. This clock shouldn’t be altered in any way. No other parameters in the pattern generator or the clock should be changed except for the Pattern itself. It takes 8 seconds to load the 256 bits of instructions to the instruction memory (1/32 x 16 registers x 16 bit instruction word). An extra two seconds is given as buffer time in order to account for the computing power limitations of the host machine and the subsequent clock skipping and bugs. The clock that drives the program counter is separate from the clock used to load the Instruction memory. The frequency of this clock can be varied freely as it only changes the speed of execution. This clock frequency also must be selected based on the hardware that the program in running on as the circuit simulation gets heavy on the CPU very fast. Once the 10 seconds is over the clock starts and instructions are executed. Incase there is no loops in the program, the program is executed from the first line again as there is no HALT feature.
+
+
